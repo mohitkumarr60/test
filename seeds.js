@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Product = require("./models/products");
+import 'dotenv/config'
 
-mongoose.connect("mongodb://127.0.0.1:27017/womenSafetyApp", {
+mongoose.connect(`mongodb+srv://mohitkumarr60:${process.env.DB_PASSWORD}@test.kcirr.mongodb.net/?retryWrites=true&w=majority&appName=test`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
