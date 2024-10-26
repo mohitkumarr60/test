@@ -1,0 +1,18 @@
+<h1>Your Cart</h1>
+
+<ul>
+  <% cart.items.forEach(item => { %>
+    <li>
+      Product: <%= item.productId.name %> - Quantity: <%= item.quantity %>
+    </li>
+  <% }) %>
+</ul>
+
+<p>Total Quantity: <%= cart.totalQuantity %></p>
+<p>Total Price: $<%= cart.totalPrice %></p>
+
+<form action="/cart/clear" method="POST">
+  <button type="submit">Clear Cart</button>
+</form>
+
+<a href="/products">Continue Shopping</a>

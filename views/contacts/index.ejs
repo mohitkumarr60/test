@@ -1,0 +1,121 @@
+<%- include('../partials/header') %> <!-- Include header at the top -->
+
+<main>
+    <h1>Contacts</h1>
+    <div class="contact-list">
+        <% contacts.forEach(contact => { %>
+            <div class="contact-card">
+                <h2><%= contact.name %></h2>
+                <p>Phone: <%= contact.phone %></p>
+                <button class="call-button" onclick="makeCall('<%= contact.phone %>')">Call Now</button>
+                <a href="/contacts/<%= contact._id %>" class="details-link">View Details</a>
+            </div>
+        <% }) %>
+    </div>
+    <a href="/" class="btn add-contact-button">Back to Home</a>
+</main>
+
+<footer>
+    <p>&copy; 2024 Nidar Naari. All rights reserved.</p>
+</footer>
+
+<!-- Inline CSS Styles -->
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff 30%, #f3f4f6 100%);
+      color: #333;
+      background-image: url('https://media.istockphoto.com/id/487729433/photo/somethings-not-right-here.jpg?s=612x612&w=0&k=20&c=nlzTWorIvABTaI1J3dhE7HbvzuihNSRPchwt17LPn_k=');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+  }
+
+  header {
+      background-color: #ff6f61;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+  }
+
+  h1 {
+      font-size: 24px;
+      margin: 20px 0;
+      text-align: center;
+  }
+
+  .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+      margin: 120px auto 40px;
+  }
+
+  .contact-card {
+      background-color: rgba(243, 244, 246, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+  }
+
+  .contact-card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+  }
+
+  .contact-card p {
+      font-size: 16px;
+      margin-bottom: 10px;
+  }
+
+  .call-button, .add-contact-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #ff6f61 0%, #ff4f50 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      border: none;
+  }
+
+  .call-button:hover, .add-contact-button:hover {
+      background-color: #ff4f50;
+  }
+
+  .details-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ff6f61;
+      text-decoration: underline;
+  }
+
+  footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+  }
+</style>
+
+<script>
+  // Function to initiate a call
+  function makeCall(phoneNumber) {
+      window.location.href = `tel:${phoneNumber}`;
+  }
+</script>
